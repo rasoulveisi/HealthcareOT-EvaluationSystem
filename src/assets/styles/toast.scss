@@ -1,0 +1,18 @@
+.toast-error {
+    font-family: 'roboto';
+    border-color : #da1e28 !important;
+    background-color: #fff1f1;
+    color: black !important;
+    background-image: none;
+
+    &::before {
+      font-family: 'icomoon';
+      content: '\e900';
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      font-size: 18px;
+      color: #da1e28;
+    }
+  }
+ 

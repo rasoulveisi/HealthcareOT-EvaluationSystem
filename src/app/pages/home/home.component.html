@@ -1,0 +1,333 @@
+<main class="flex flex-col items-center relative h-dvh" #main>
+  <app-header
+    class="w-full"
+    [info]="evaluationDetail"
+    (updateEvaluation)="getEvaluation()"
+  ></app-header>
+  
+  @if(evaluationDetail?.isComplete){
+    <div class="w-full py-6 container mx-auto flex flex-col items-center">
+      <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+        <strong class="font-bold">Evaluation Complete!</strong>
+        <span class="block sm:inline"> The occupational therapy evaluation has been successfully submitted.</span>
+      </div>
+    </div>
+  } @else {
+    <form [formGroup]="evaluationForm" class="w-full py-6 container mx-auto flex flex-col" (ngSubmit)="submitEvaluation()">
+      
+      <!-- Clinic Information Section -->
+      <section class="mb-8">
+        <div class="form-section--container">
+          <strong class="font-bold text-base leading-[18.75px] mb-4 block">Clinic Information</strong>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="clinicName">
+                {{ evaluationFormConst["clinicName"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="clinicName"
+                formControlName="clinicName"
+                [disabled]="!evaluationFormConst['clinicName'].isEditable"
+              />
+              @if (evaluationForm.get('clinicName')?.invalid && evaluationForm.get('clinicName')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["clinicName"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="clinicLicense">
+                {{ evaluationFormConst["clinicLicense"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="clinicLicense"
+                formControlName="clinicLicense"
+                [disabled]="!evaluationFormConst['clinicLicense'].isEditable"
+              />
+              @if (evaluationForm.get('clinicLicense')?.invalid && evaluationForm.get('clinicLicense')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["clinicLicense"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="therapistName">
+                {{ evaluationFormConst["therapistName"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="therapistName"
+                formControlName="therapistName"
+                [disabled]="!evaluationFormConst['therapistName'].isEditable"
+              />
+              @if (evaluationForm.get('therapistName')?.invalid && evaluationForm.get('therapistName')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["therapistName"].validationText }}</div>
+              }
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Patient Information Section -->
+      <section class="mb-8">
+        <div class="form-section--container">
+          <strong class="font-bold text-base leading-[18.75px] mb-4 block">Patient Information</strong>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="patientName">
+                {{ evaluationFormConst["patientName"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="patientName"
+                formControlName="patientName"
+                [disabled]="!evaluationFormConst['patientName'].isEditable"
+              />
+              @if (evaluationForm.get('patientName')?.invalid && evaluationForm.get('patientName')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["patientName"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="patientId">
+                {{ evaluationFormConst["patientId"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="patientId"
+                formControlName="patientId"
+                [disabled]="!evaluationFormConst['patientId'].isEditable"
+              />
+              @if (evaluationForm.get('patientId')?.invalid && evaluationForm.get('patientId')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["patientId"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="birthDate">
+                {{ evaluationFormConst["birthDate"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="birthDate"
+                formControlName="birthDate"
+                dateMask
+                placeholder="DD-MM-YYYY"
+                [disabled]="!evaluationFormConst['birthDate'].isEditable"
+              />
+              @if (evaluationForm.get('birthDate')?.invalid && evaluationForm.get('birthDate')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["birthDate"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="clientId">
+                {{ evaluationFormConst["clientId"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="clientId"
+                formControlName="clientId"
+                [disabled]="!evaluationFormConst['clientId'].isEditable"
+              />
+              @if (evaluationForm.get('clientId')?.invalid && evaluationForm.get('clientId')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["clientId"].validationText }}</div>
+              }
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Address Information Section -->
+      <section class="mb-8">
+        <div class="form-section--container">
+          <strong class="font-bold text-base leading-[18.75px] mb-4 block">Address Information</strong>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="postalCode">
+                {{ evaluationFormConst["postalCode"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="postalCode"
+                formControlName="postalCode"
+                (input)="postalCodeChange()"
+                [disabled]="!evaluationFormConst['postalCode'].isEditable"
+              />
+              @if (evaluationForm.get('postalCode')?.invalid && evaluationForm.get('postalCode')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["postalCode"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="houseNumber">
+                {{ evaluationFormConst["houseNumber"].label }}
+              </label>
+                             @if (addressOptions && addressOptions.houseNumbers && addressOptions.houseNumbers.length > 0) {
+                 <p-select
+                   [options]="addressOptions.houseNumbers"
+                   formControlName="houseNumber"
+                   placeholder="Select house number"
+                   (onChange)="houseNumberChange($event)"
+                   class="w-full"
+                 />
+               } @else {
+                <input
+                  class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="text"
+                  id="houseNumber"
+                  formControlName="houseNumber"
+                  [disabled]="!evaluationFormConst['houseNumber'].isEditable"
+                />
+              }
+              @if (evaluationForm.get('houseNumber')?.invalid && evaluationForm.get('houseNumber')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["houseNumber"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="addition">
+                {{ evaluationFormConst["addition"].label }}
+              </label>
+                             @if (addressOptions && addressOptions.houseNumberAdditions && addressOptions.houseNumberAdditions.length > 0) {
+                <p-select
+                  [options]="addressOptions.houseNumberAdditions"
+                  formControlName="addition"
+                  placeholder="Select addition"
+                  (onChange)="onAdditionChange()"
+                  class="w-full"
+                />
+              } @else {
+                <input
+                  class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="text"
+                  id="addition"
+                  formControlName="addition"
+                  [disabled]="!evaluationFormConst['addition'].isEditable"
+                />
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="address">
+                {{ evaluationFormConst["address"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="address"
+                formControlName="address"
+                [disabled]="!evaluationFormConst['address'].isEditable"
+              />
+              @if (evaluationForm.get('address')?.invalid && evaluationForm.get('address')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["address"].validationText }}</div>
+              }
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Referral Information Section -->
+      <section class="mb-8">
+        <div class="form-section--container">
+          <strong class="font-bold text-base leading-[18.75px] mb-4 block">Referral Information</strong>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="referringPhysician">
+                {{ evaluationFormConst["referringPhysician"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="referringPhysician"
+                formControlName="referringPhysician"
+                [disabled]="!evaluationFormConst['referringPhysician'].isEditable"
+              />
+              @if (evaluationForm.get('referringPhysician')?.invalid && evaluationForm.get('referringPhysician')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["referringPhysician"].validationText }}</div>
+              }
+            </div>
+
+            <div class="form-section--input-container">
+              <label class="mb-2 text-sm font-medium" for="referralSource">
+                {{ evaluationFormConst["referralSource"].label }}
+              </label>
+              <input
+                class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="text"
+                id="referralSource"
+                formControlName="referralSource"
+                [disabled]="!evaluationFormConst['referralSource'].isEditable"
+              />
+              @if (evaluationForm.get('referralSource')?.invalid && evaluationForm.get('referralSource')?.touched) {
+                <div class="text-red-500 text-sm mt-1">{{ evaluationFormConst["referralSource"].validationText }}</div>
+              }
+            </div>
+
+            @if (isDiagnosisCodeShow) {
+              <div class="form-section--input-container">
+                <label class="mb-2 text-sm font-medium" for="diagnosisCode">
+                  {{ evaluationFormConst["diagnosisCode"].label }}
+                </label>
+                <input
+                  class="form-input w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  type="text"
+                  id="diagnosisCode"
+                  formControlName="diagnosisCode"
+                  [disabled]="!evaluationFormConst['diagnosisCode'].isEditable"
+                />
+              </div>
+            }
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Assessments Section -->
+      <section class="mb-8">
+        <div class="form-section--container">
+          <strong class="font-bold text-base leading-[18.75px] mb-4 block">Assessments</strong>
+          <div formArrayName="assessments">
+            <app-assessment
+              [assessmentFormArray]="assessmentFormArray"
+              [assessments]="assessmentSuggestions"
+              (assessmentChange)="onAssessmentChange($event)"
+              (addAssessment)="addAssessmentForm($event)"
+              (removeAssessment)="removeAssessmentForm($event)"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Submit Button -->
+      <div class="flex justify-center mt-8">
+        <button
+          type="submit"
+          class="px-6 py-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+          [disabled]="evaluationForm.invalid"
+        >
+          Submit Evaluation
+        </button>
+      </div>
+
+    </form>
+  }
+  
+  <!-- Toast Messages -->
+  <p-toast></p-toast>
+</main>

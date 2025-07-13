@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+@use "./assets/styles/index.scss";
+
+/* Global font family */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Apply Roboto to all elements */
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.form-input {
+  height: 2.5rem; /* h-10 */
+  width: 100%; /* w-full */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 16.41px; /* leading-[16.41px] */
+  appearance: textfield;
+  -moz-appearance: textfield;
+  
+  &:disabled {
+    background-color: #E6E8ED; /* bg-mdo-cool-gray-20 */
+  }
+  
+  &:enabled {
+    border-bottom: 1px solid #BFC3CC; /* border-b border-mdo-cool-gray-50 */
+  }
+  
+  &:focus {
+    outline: none; /* focus:outline-none */
+    box-shadow: none; /* focus:ring-0 */
+    border: none; /* focus:border-none */
+  }
+  
+  &.ng-invalid.ng-touched {
+    border: 2px solid #DA1E28; /* border-2 border-danger */
+  }
+  
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.form-section{
+  &--container{
+    @apply flex flex-col gap-4
+  }
+
+  &--inputs-container{
+    @apply grid grid-cols-3 gap-6
+  }
+
+  &--input-container{
+    @apply flex flex-col
+  }
+}

@@ -1,0 +1,65 @@
+<header
+  class="bg-gradient-to-r from-[#12171A] to-[#0B3452] text-white  py-6">
+  <div class="flex container mx-auto">
+    <div class="flex flex-col font-medium text-2xl leading-9">
+      <div>Initial Occupational Therapy</div>
+      <div class="text-[#CDE0BD]">Evaluation Report</div>
+    </div>
+    <div class="flex flex-col pl-[46px] gap-4">
+      <div class="flex items-center gap-1" [ngClass]="{'invisible': evaluation?.isComplete}">
+          <warning-svg fillColor="#fff" class="w-6 h-6"></warning-svg>
+          <span class="font-medium text-base">
+            Complete the evaluation form to generate a comprehensive report
+          </span>
+      </div>
+      <div class="flex gap-8">
+        @if (evaluation) {
+          <div class="flex gap-3 items-center">
+            <span>Evaluation ID</span>
+            <strong>{{ evaluation.evaluationId}}</strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <span>Evaluation Type</span>
+            <strong>{{evaluationTypes[evaluation.evaluationType].label}}</strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <span>Evaluation Date</span>
+            <strong>{{evaluation.evaluationDate | date:'dd-MM-yyyy'}}</strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <span>Therapist Type</span>
+            <strong>{{ therapistTypes[evaluation.therapistType].label }}</strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <label>Status</label>
+            <div [ngClass]="evaluation.isComplete ? 'bg-success-tag-bg text-black':'bg-yellow-tag-back text-yellow-tag-text'"
+              class="w-fit  px-2 py-1 rounded-[20px] text-xs flex items-center">
+              {{ evaluationStatus[evaluation.isComplete ? 'true':'false'] }}
+            </div>
+          </div>
+        } @else {
+          <div class="flex gap-3 items-center">
+            <span>Evaluation ID</span>
+            <strong class="h-5 w-20 animate-pulse rounded-lg bg-gray-600"></strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <span>Evaluation Type</span>
+            <strong class="h-5 w-10 animate-pulse rounded-lg bg-gray-600"></strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <span>Evaluation Date</span>
+            <strong class="h-5 w-20 animate-pulse rounded-lg bg-gray-600"></strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <span>Therapist Type</span>
+            <strong class="h-5 w-6 animate-pulse rounded-lg bg-gray-600"></strong>
+          </div>
+          <div class="flex gap-3 items-center">
+            <label>Status</label>
+            <strong class="h-5 w-24 animate-pulse rounded-lg bg-gray-600"></strong>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</header>

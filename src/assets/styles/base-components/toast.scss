@@ -1,0 +1,58 @@
+@tailwind components;
+@layer components {
+  .custom-toast{
+      @apply rounded-none;
+      .light{
+        &-success{
+          @apply text-mdo-cool-gray-100 bg-toast-successBg border-toast-successBorder;
+        }
+
+        &-error {
+          @apply text-mdo-cool-gray-100 bg-toast-errorBg border-toast-errorBorder;
+        }
+
+        &-info {
+          @apply text-mdo-cool-gray-100 bg-toast-infoBg border-toast-infoBorder;
+        }
+
+        &-warning{
+          @apply text-mdo-cool-gray-100 bg-toast-warningBg border-toast-warningBorder;
+        }
+      }
+      .dark{
+        @apply bg-toast-darkBg border-none;
+        .close{
+          filter: invert(1);
+        }
+
+        &-success{
+          @apply text-white border-none;
+        }
+
+        &-error {
+          @apply text-white border-none;
+        }
+
+        &-info {
+          @apply text-white border-none;
+        }
+
+        &-warning{
+          @apply text-white border-none;
+        }
+      }
+      .border-error-left{
+        @apply border-toast-errorLeftBorder;
+      }
+
+      .border-warning-left{
+        @apply border-toast-warningLeftBorder;
+      }
+      .border-info-left{
+        @apply border-toast-infoLeftBorder;
+      }
+      .border-success-left{
+        @apply border-toast-successLeftBorder;
+      }
+    }
+  }

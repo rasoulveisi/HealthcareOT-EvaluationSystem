@@ -1,0 +1,106 @@
+:root {
+    --mdo-cool-gray-color-10: #F2F4F8;
+    --mdo-cool-gray-color-20: #E6E8ED;
+    --mdo-cool-gray-color-30: #D9DCE2;
+    --mdo-cool-gray-color-40: #CCCFD7;
+    --mdo-cool-gray-color-50: #BFC3CC;
+    --mdo-cool-gray-color-60: #B2B6C1;
+    --mdo-cool-gray-color-70: #A5AAB6;
+    --mdo-cool-gray-color-80: #989DAB;
+    --mdo-cool-gray-color-90: #8C91A0;
+    --mdo-cool-gray-color-100: #7F8495;
+
+    --mdo-gray-color-10: #F4F4F4;
+    --mdo-gray-color-20: #E0E0E0;
+    --mdo-gray-color-30: #C6C6C6;
+    --mdo-gray-color-40: #A8A8A8;
+    --mdo-gray-color-50: #8D8D8D;
+    --mdo-gray-color-60: #6F6F6F;
+    --mdo-gray-color-70: #525252;
+    --mdo-gray-color-80: #393939;
+    --mdo-gray-color-90: #262626;
+    --mdo-gray-color-100: #161616;
+
+    --mdo-primary: #237CB3;
+    --mdo-error: #DA1E28
+}
+
+$gray-cool-colors: (
+    "10": #F2F4F8,
+    "20": #DDE1E6,
+    "30": #C1C7CD,
+    "40": #A2A9B0,
+    "50": #878D96,
+    "60": #697077,
+    "70": #4D5358,
+    "80": #343A3F,
+    "90": #21272A,
+    "100": #121619,
+);
+
+$gray-colors: (
+    "10": #F4F4F4,
+    "20": #E0E0E0,
+    "30": #C6C6C6,
+    "40": #A8A8A8,
+    "50": #8D8D8D,
+    "60": #6F6F6F,
+    "70": #525252,
+    "80": #393939,
+    "90": #262626,
+    "100": #161616
+);
+
+$mdo-colors: (
+    "primary": #237CB3,
+    "error": #DA1E28,
+    "success": #44B690
+);
+
+
+
+@each $key,
+$color in $gray-cool-colors {
+    .bg-cool-gray-#{$key} {
+        background-color: $color;
+    }
+
+    .text-cool-gray-#{$key} {
+        color: $color;
+    }
+
+    .border-cool-gray-#{$key} {
+        border-color: $color;
+    }
+}
+
+
+@each $key,
+$color in $gray-colors {
+    .bg-gray-color-#{$key} {
+        background-color: $color;
+    }
+
+    .text-gray-color-#{$key} {
+        color: $color;
+    }
+
+    .border-gray-color-#{$key} {
+        border-color: $color;
+    }
+}
+
+@each $key,
+$color in $mdo-colors {
+    .bg-mdo-#{$key} {
+        background-color: $color;
+    }
+
+    .text-mdo-#{$key} {
+        color: $color;
+    }
+
+    .border-mdo-#{$key} {
+        border-color: $color;
+    }
+}
