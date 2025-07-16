@@ -1,10 +1,12 @@
-# Occupational Therapy Evaluation Report
+# HealthcareOT-EvaluationSystem
 
-A dynamic form application for creating comprehensive Initial Occupational Therapy Evaluation Reports with advanced data processing and analysis capabilities.
+A comprehensive healthcare technology solution for creating Initial Occupational Therapy Evaluation Reports with advanced data processing and clinical analysis capabilities. This Angular application transforms traditional paper-based occupational therapy evaluations into a modern, digital healthcare platform.
 
 ## 🎯 Project Overview
 
-This Angular application transforms traditional paper-based occupational therapy evaluations into a modern, digital solution. It provides therapists with an intuitive interface to collect patient data, administer assessments, and generate detailed evaluation reports with automated insights and recommendations.
+HealthcareOT-EvaluationSystem is an enterprise-grade Angular application that digitizes and modernizes occupational therapy evaluations for healthcare providers. It provides therapists with an intuitive, HIPAA-compliant interface to collect patient data, administer standardized assessments, and generate detailed evaluation reports with automated clinical insights and evidence-based recommendations.
+
+This system represents the intersection of healthcare technology and user experience design, offering a scalable solution for occupational therapy practices, hospitals, and rehabilitation centers.
 
 ## ✨ Key Features
 
@@ -43,8 +45,8 @@ This Angular application transforms traditional paper-based occupational therapy
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/rasoulveisi/ng-dynamic-form.git
-   cd occupational-therapy-evaluation
+   git clone https://github.com/rasoulveisi/HealthcareOT-EvaluationSystem.git
+   cd HealthcareOT-EvaluationSystem
    ```
 
 2. **Install dependencies**
